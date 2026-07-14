@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LumiLight - Smart Desk Lamp Prototype (React)</title>
+    <meta name="description" content="LumiLight - Đèn bàn thông minh với công nghệ HCL, khắc tên 3D cá nhân hóa và tích hợp All-in-One.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- React & ReactDOM (CDN) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel Standalone (CDN) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Load React Components via Babel -->
+    <script type="text/babel" src="components/Hero.jsx"></script>
+    <script type="text/babel" src="components/LightSimulator.jsx"></script>
+    <script type="text/babel" src="components/Personalization.jsx"></script>
+    <script type="text/babel" src="components/SmartBase.jsx"></script>
+    <script type="text/babel" src="components/ComparisonTable.jsx"></script>
+    
+    <!-- Main App -->
+    <script type="text/babel" src="App.jsx"></script>
+</body>
+</html>
