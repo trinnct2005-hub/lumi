@@ -4,6 +4,9 @@
   "workspaces": [
     "frontend"
   ],
+  "scripts": {
+    "build": "yarn --cwd frontend build && rm -rf dist && mv frontend/dist dist"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5"
