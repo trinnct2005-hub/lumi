@@ -1,59 +1,69 @@
 import { useState, useEffect } from 'react';
 export default function LightSimulator() {
-    const [hour, setHour] = useState(8);
+    const [ambient, setAmbient] = useState(50);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const [direction, setDirection] = useState(1);
 
     useEffect(() => {
         let timer;
         if (isAutoPlaying) {
             timer = setInterval(() => {
-                setHour(h => {
-                    let next = h + 0.1;
-                    return next >= 24 ? 0 : next;
+                setAmbient(a => {
+                    let next = a + direction * 0.5;
+                    if (next >= 100) {
+                        setDirection(-1);
+                        return 100;
+                    }
+                    if (next <= 0) {
+                        setDirection(1);
+                        return 0;
+                    }
+                    return next;
                 });
-            }, 50); // Speed of the day cycle
+            }, 50);
         }
         return () => clearInterval(timer);
-    }, [isAutoPlaying]);
+    }, [isAutoPlaying, direction]);
 
-    // Calculate CCT and Lux based on Hour (HCL Logic)
+    // Logic: Ánh sáng môi trường càng sáng -> Đèn càng trung hòa (sáng vừa phải, màu trung tính)
+    // Ánh sáng môi trường càng tối -> Đèn càng sáng (để bù sáng)
+    
     let cct = 4000;
     let lux = 50;
     let modeText = "";
 
-    if (hour >= 6 && hour < 17) {
-        let ratio = Math.min((hour - 6) / 2, 1); // 6 to 8 transitions to max
-        cct = 2700 + (6500 - 2700) * ratio;
-        lux = 20 + 80 * ratio;
-        modeText = "☀️ Ban ngày (Tập trung): Ánh sáng trắng lạnh giúp tỉnh táo, ngăn tiết Melatonin.";
-    } else if (hour >= 17 && hour < 22) {
-        let ratio = (hour - 17) / 5; // 17 to 22 transitions to warm
-        cct = 6500 - (6500 - 2700) * ratio;
-        lux = 100 - 70 * ratio;
-        modeText = "🌅 Chiều tối (Thư giãn): Chuyển dần sang ánh sáng ấm, chuẩn bị cho nhịp sinh học nghỉ ngơi.";
+    if (ambient > 70) {
+        // Môi trường sáng rực
+        cct = 5000 + ((ambient - 70) / 30) * 1500; // 5000K -> 6500K
+        lux = 20 + ((100 - ambient) / 30) * 20; // 40% -> 20%
+        modeText = "☀️ Môi trường sáng: Đèn chuyển sang trạng thái trung hòa, tiết kiệm năng lượng và hòa quyện với ánh sáng tự nhiên.";
+    } else if (ambient > 30) {
+        // Môi trường bình thường
+        let ratio = (ambient - 30) / 40;
+        cct = 4000 + ratio * 1000; // 4000K -> 5000K
+        lux = 60 - ratio * 20; // 60% -> 40%
+        modeText = "⛅ Môi trường bình thường: Ánh sáng và màu sắc cân bằng (True Tone), giúp mắt thoải mái nhất.";
     } else {
-        cct = 2700;
-        lux = 20;
-        modeText = "🌙 Ban đêm (Dễ ngủ): Ánh sáng vàng nhạt, không có ánh sáng xanh, kích thích Melatonin.";
+        // Môi trường tối
+        let ratio = ambient / 30;
+        cct = 2700 + ratio * 1300; // 2700K -> 4000K
+        lux = 100 - ratio * 40; // 100% -> 60%
+        modeText = "🌙 Môi trường tối: Đèn tự động tăng độ sáng để bù sáng, chuyển màu ấm để bảo vệ thị lực.";
     }
 
     // Round values
     cct = Math.round(cct);
     lux = Math.round(lux);
+    let displayAmbient = Math.round(ambient);
 
     let whiteRatio = (cct - 2700) / (6500 - 2700);
     let yellowRatio = 1 - whiteRatio;
 
-    const formatTime = (h) => {
-        let hrs = Math.floor(h);
-        let mins = Math.floor((h - hrs) * 60);
-        return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
-    };
-
     return (
         <section id="hcl" className="section hcl-section">
-            <h2 className="section-title">HCL <span>& Anti-Blue Light</span></h2>
-            <p className="section-desc">Mô phỏng nhịp sinh học tự động: Tự động điều chỉnh ánh sáng pha trộn theo thời gian trong ngày để bảo vệ mắt và sức khỏe của bạn.</p>
+            <div className="bg-watermark">TRUE TONE</div>
+            <h2 className="section-title">Cảm biến <span>True Tone & Auto-Brightness</span></h2>
+            <p className="section-desc">Mô phỏng giống màn hình điện thoại thông minh: Đèn tự động nhận diện ánh sáng môi trường để điều chỉnh độ sáng và nhiệt độ màu (CCT) theo thời gian thực.</p>
             
             <div className="glass-container">
                 <div className="simulator-container">
@@ -70,28 +80,29 @@ export default function LightSimulator() {
                         
                         <div className="sim-stats">
                             <p className="cct-value">{cct}K</p>
-                            <p className="lux-value">Độ sáng: {lux}%</p>
+                            <p className="lux-value">Độ sáng đèn: {lux}%</p>
                         </div>
                     </div>
                 </div>
                 
                 <div className="controls">
                     <div className="time-control-box">
-                        <h3>Mô phỏng Thời gian thực</h3>
-                        <div className="time-display">{formatTime(hour)}</div>
-                        <p className="mode-desc">{modeText}</p>
+                        <h3>Mô phỏng Cảm biến Môi trường</h3>
+                        <div className="time-display">{displayAmbient}%</div>
+                        <p style={{textAlign: 'center', color: '#facc15', fontSize: '0.9rem'}}>Độ sáng môi trường xung quanh</p>
+                        <p className="mode-desc" style={{marginTop: '1rem'}}>{modeText}</p>
                         
                         <div className="control-group" style={{marginTop: '2rem'}}>
-                            <input type="range" min="0" max="23.9" value={hour} step="0.1" 
+                            <input type="range" min="0" max="100" value={ambient} step="1" 
                                 onChange={(e) => {
-                                    setHour(Number(e.target.value));
+                                    setAmbient(Number(e.target.value));
                                     setIsAutoPlaying(false);
                                 }}
                             />
                             <div className="slider-labels">
-                                <span>00:00</span>
-                                <span>12:00</span>
-                                <span>23:59</span>
+                                <span>Tối (0%)</span>
+                                <span>Bình thường</span>
+                                <span>Sáng (100%)</span>
                             </div>
                         </div>
                         

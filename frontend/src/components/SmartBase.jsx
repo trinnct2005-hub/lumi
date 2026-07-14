@@ -24,6 +24,7 @@ export default function SmartBase() {
 
     return (
         <section id="smartbase" className="section smartbase-section">
+            <div className="bg-watermark">SMART HUB</div>
             <h2 className="section-title">Đế đèn All-in-One (Màn hình TFT)</h2>
             <p className="section-desc">Giải phóng không gian bàn học. Tích hợp đồng hồ, nhiệt kế và thời tiết thời gian thực (Lấy từ Backend).</p>
             

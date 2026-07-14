@@ -1,24 +1,21 @@
-const http = require('http');
+const express = require('express');
+const cors = require('cors');
 const routes = require('./routes');
 
+const app = express();
 const PORT = 3000;
 
-const server = http.createServer((req, res) => {
-    // Add CORS headers so Frontend can call this API
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+app.use(cors());
+app.use(express.json()); // Built-in middleware for JSON parsing
 
-    if (req.method === 'OPTIONS') {
-        res.writeHead(200);
-        res.end();
-        return;
-    }
+// API Routes
+app.use('/api', routes);
 
-    // Pass the request to the router
-    routes.handleRequest(req, res);
+// Bắt lỗi các route không tồn tại nếu chưa được xử lý
+app.use((req, res) => {
+    res.status(404).json({ error: 'Route not found' });
 });
 
-server.listen(PORT, () => {
-    console.log(`[LumiLight BE] Server is running on http://localhost:${PORT}`);
+app.listen(PORT, () => {
+    console.log(`[LumiLight BE] Express Server is running on http://localhost:${PORT}`);
 });

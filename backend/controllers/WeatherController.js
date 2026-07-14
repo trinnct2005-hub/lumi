@@ -11,14 +11,12 @@ class WeatherController {
             // Lấy dữ liệu thời tiết (Mock từ service)
             const weatherData = this.dataService.getCurrentWeather();
             
-            res.writeHead(200);
-            res.end(JSON.stringify({
+            res.json({
                 success: true,
                 data: weatherData
-            }));
+            });
         } catch (error) {
-            res.writeHead(500);
-            res.end(JSON.stringify({ error: 'Failed to fetch weather data' }));
+            res.status(500).json({ error: 'Failed to fetch weather data' });
         }
     }
 }
