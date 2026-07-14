@@ -19,7 +19,7 @@ export default function Personalization() {
 
         clearTimeout(typingTimer.current);
         typingTimer.current = setTimeout(() => {
-            fetch('http://localhost:3000/api/config', {
+            fetch('/api/config', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: val || 'LUMILIGHT' })

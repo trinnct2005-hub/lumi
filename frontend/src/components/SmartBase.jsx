@@ -14,7 +14,7 @@ export default function SmartBase() {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/weather')
+        fetch('/api/weather')
             .then(res => res.json())
             .then(res => {
                 if(res.success) setWeather(res.data);
