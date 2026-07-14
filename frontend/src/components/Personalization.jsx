@@ -1,6 +1,7 @@
-window.Personalization = function Personalization() {
-    const [name, setName] = React.useState('');
-    const typingTimer = React.useRef(null);
+import { useState, useRef } from 'react';
+export default function Personalization() {
+    const [name, setName] = useState('');
+    const typingTimer = useRef(null);
 
     const handleNameChange = (e) => {
         const val = e.target.value;

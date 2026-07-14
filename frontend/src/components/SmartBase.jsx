@@ -1,18 +1,19 @@
-window.SmartBase = function SmartBase() {
-    const [time, setTime] = React.useState(new Date());
-    const [weather, setWeather] = React.useState({
+import { useState, useEffect } from 'react';
+export default function SmartBase() {
+    const [time, setTime] = useState(new Date());
+    const [weather, setWeather] = useState({
         temperature: '...',
         icon: '...',
         humidity: '...',
         location: '...'
     });
 
-    React.useEffect(() => {
+    useEffect(() => {
         const timer = setInterval(() => setTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
         fetch('http://localhost:3000/api/weather')
             .then(res => res.json())
             .then(res => {

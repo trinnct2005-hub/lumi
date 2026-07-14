@@ -1,6 +1,11 @@
-const { Hero, LightSimulator, Personalization, SmartBase, ComparisonTable } = window;
+import Hero from './components/Hero.jsx';
+import LightSimulator from './components/LightSimulator.jsx';
+import Personalization from './components/Personalization.jsx';
+import SmartBase from './components/SmartBase.jsx';
+import ComparisonTable from './components/ComparisonTable.jsx';
+import TeamMembers from './components/TeamMembers.jsx';
 
-window.App = function App() {
+export default function App() {
     return (
         <div>
             <nav className="navbar">
@@ -13,6 +18,7 @@ window.App = function App() {
                     <li><a href="#personalize">Cá nhân hóa</a></li>
                     <li><a href="#smartbase">Smart Base</a></li>
                     <li><a href="#compare">So sánh</a></li>
+                    <li><a href="#team">Đội ngũ</a></li>
                 </ul>
             </nav>
 
@@ -21,6 +27,7 @@ window.App = function App() {
             <Personalization />
             <SmartBase />
             <ComparisonTable />
+            <TeamMembers />
 
             <footer>
                 <div className="footer-grid">
@@ -59,6 +66,3 @@ window.App = function App() {
         </div>
     );
 };
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<window.App />);

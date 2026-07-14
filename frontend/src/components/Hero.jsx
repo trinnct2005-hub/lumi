@@ -1,4 +1,4 @@
-window.Hero = function Hero() {
+export default function Hero() {
     return (
         <header className="hero">
             <div className="hero-content">

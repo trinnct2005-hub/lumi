@@ -1,4 +1,4 @@
-window.ComparisonTable = function ComparisonTable() {
+export default function ComparisonTable() {
     return (
         <section id="compare" className="section comparison-section">
             <h2 className="section-title">Vì sao chọn LumiLight?</h2>
