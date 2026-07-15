@@ -9,8 +9,8 @@ export default function ComparisonTable() {
                         <tr>
                             <th>Tính năng</th>
                             <th className="highlight-col">LumiLight (Sinh viên)</th>
-                            <th>Xiaomi (Phổ thông)</th>
-                            <th>Baseus (Văn phòng)</th>
+                            <th>Đèn Phổ thông (Trên thị trường)</th>
+                            <th>Đèn Văn phòng (Trên thị trường)</th>
                         </tr>
                     </thead>
                     <tbody>

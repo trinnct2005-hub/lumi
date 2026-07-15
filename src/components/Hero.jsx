@@ -45,6 +45,14 @@ export default function Hero() {
                     </div>
                 </div>
 
+                <div className="floating-badge badge-4">
+                    <span className="badge-icon">🧠</span>
+                    <div>
+                        <strong>AI Nhận Diện</strong>
+                        <p>Tự động điều chỉnh</p>
+                    </div>
+                </div>
+
                 <div className="lamp-abstract">
                     <div className="lamp-base">
                         <img src="/logo.png" alt="Logo on lamp" className="hero-lamp-logo" />

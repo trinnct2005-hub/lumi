@@ -2,24 +2,16 @@ import { useState, useEffect } from 'react';
 export default function SmartBase() {
     const [time, setTime] = useState(new Date());
     const [weather, setWeather] = useState({
-        temperature: '...',
-        icon: '...',
-        humidity: '...',
-        location: '...'
+        temperature: 26,
+        condition: "Sunny",
+        icon: "☀️",
+        humidity: 65,
+        location: "Hà Nội"
     });
 
     useEffect(() => {
         const timer = setInterval(() => setTime(new Date()), 1000);
         return () => clearInterval(timer);
-    }, []);
-
-    useEffect(() => {
-        fetch('/api/weather')
-            .then(res => res.json())
-            .then(res => {
-                if(res.success) setWeather(res.data);
-            })
-            .catch(err => console.log("Backend offline, using mock weather data"));
     }, []);
 
     return (

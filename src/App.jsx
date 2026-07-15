@@ -1,4 +1,5 @@
 import Hero from './components/Hero.jsx';
+import AboutProject from './components/AboutProject.jsx';
 import LightSimulator from './components/LightSimulator.jsx';
 import Personalization from './components/Personalization.jsx';
 import SmartBase from './components/SmartBase.jsx';
@@ -115,11 +116,53 @@ export default function App() {
             </nav>
 
             <Hero />
+            <AboutProject />
             <LightSimulator />
             <Personalization />
             <SmartBase />
             <ComparisonTable />
             <TeamMembers />
+
+            <section id="contact" style={{ background: 'linear-gradient(135deg, #0f172a, #1e293b)', textAlign: 'center', padding: '5rem 2rem' }}>
+                <h2 className="section-title">Sở Hữu LumiLight Ngay Hôm Nay</h2>
+                <p className="section-desc" style={{ maxWidth: '600px', margin: '0 auto 2rem auto', color: '#cbd5e1' }}>
+                    Nâng tầm góc làm việc của bạn với ánh sáng thông minh bảo vệ mắt, thiết kế cá nhân hóa độc quyền và ngập tràn công nghệ.
+                </p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                    <a href="#personalize" style={{ 
+                        padding: '1rem 2rem', fontSize: '1.2rem', fontWeight: 'bold', 
+                        borderRadius: '50px', background: 'linear-gradient(to right, #38bdf8, #3b82f6)',
+                        color: 'white', textDecoration: 'none', boxShadow: '0 10px 25px rgba(56, 189, 248, 0.4)',
+                        transition: 'transform 0.3s'
+                    }}>
+                        🛒 ĐẶT HÀNG NGAY
+                    </a>
+                    
+                    <a href="tel:0767064904" style={{ 
+                        padding: '1rem 2rem', fontSize: '1.2rem', fontWeight: 'bold', 
+                        borderRadius: '50px', background: 'transparent', border: '2px solid #38bdf8',
+                        color: '#38bdf8', textDecoration: 'none',
+                        transition: 'all 0.3s'
+                    }}>
+                        📞 GỌI HOTLINE: 0767 064 904
+                    </a>
+                </div>
+                
+                <div style={{ marginTop: '3rem', display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', color: '#94a3b8' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '1.5rem' }}>📍</span>
+                        <span>Cần Thơ, Việt Nam</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '1.5rem' }}>📧</span>
+                        <span>lumilight.cantho@gmail.com</span>
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '1.5rem' }}>💬</span>
+                        <span>Hỗ trợ 24/7</span>
+                    </div>
+                </div>
+            </section>
 
             <footer>
                 <div className="footer-grid">

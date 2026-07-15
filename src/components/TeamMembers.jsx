@@ -1,23 +1,23 @@
 export default function TeamMembers() {
     const team = [
-        { name: "Nguyễn Như Trí", role: "CTO", desc: "Responsible for product technology and hardware development." },
-        { name: "Quach Ngoc Bang Nghi", role: "CMO", desc: "Responsible for marketing and brand communication." },
-        { name: "Nguyen Huy Hoang", role: "CFO", desc: "Responsible for project finance and budget management." },
-        { name: "Tran Thi Ngoc Xuan", role: "CSO", desc: "Responsible for sales operations and customer relations." },
-        { name: "Pham Hoang Phuong", role: "CIO", desc: "Responsible for software development and system technology." }
+        { name: "Nguyễn Như Trí", role: "CTO", desc: "Phát triển công nghệ và phần cứng (Cảm biến, Ánh sáng sinh học)." },
+        { name: "Quách Ngọc Băng Nghi", role: "CMO", desc: "Nghiên cứu thị trường và quản trị truyền thông thương hiệu." },
+        { name: "Nguyễn Huy Hoàng", role: "CFO", desc: "Quản lý tài chính, ngân sách và phân tích chi phí sản xuất." },
+        { name: "Trần Thị Ngọc Xuân", role: "CSO", desc: "Chiến lược kinh doanh, bán hàng và chăm sóc khách hàng." },
+        { name: "Phạm Hoàng Phương", role: "CIO", desc: "Phát triển phần mềm, ứng dụng quản lý và hệ thống hiển thị TFT." }
     ];
 
     return (
         <section id="team" className="section team-section">
             <h2 className="section-title">Đội ngũ <span>LumiLight</span></h2>
-            <p className="section-desc">Những thành viên nòng cốt điều hành và phát triển dự án LumiLight.</p>
+            <p className="section-desc">Những thành viên nòng cốt điều hành và phát triển dự án Startup LumiLight.</p>
             
             <div className="org-chart">
                 <div className="org-ceo">
                     <div className="team-card ceo-card glass-container">
-                        <h3>Nguyen Tran Nhu Y</h3>
+                        <h3>Nguyễn Trần Như Ý</h3>
                         <div className="role">CEO</div>
-                        <p>Manage and coordinate the entire project.</p>
+                        <p>Giám đốc điều hành, phụ trách chiến lược phát triển và điều phối toàn bộ dự án.</p>
                     </div>
                 </div>
                 

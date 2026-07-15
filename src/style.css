@@ -45,16 +45,23 @@ body {
 /* Navbar */
 .navbar {
     position: fixed;
-    top: 0;
-    width: 100%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 5%;
-    background: rgba(5, 11, 20, 0.8);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+    padding: 0.8rem 1.5rem;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
     z-index: 1000;
+    transition: all 0.3s ease;
 }
 
 .logo-container {
@@ -65,22 +72,21 @@ body {
 
 /* Make logo look like a premium app icon on dark background */
 .nav-logo {
-    height: 45px;
-    background: #FDFCF7; /* Match logo's internal cream background */
-    border-radius: 12px;
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    background: #FDFCF7;
+    border-radius: 50%;
     padding: 2px;
-    box-shadow: 0 0 15px rgba(255, 183, 3, 0.2);
+    box-shadow: 0 0 15px rgba(255, 183, 3, 0.3);
 }
 
 .nav-brand {
     font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.6rem;
-    letter-spacing: 2.5px;
-    background: linear-gradient(90deg, #FFB703, #FFA000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 20px rgba(255, 183, 3, 0.3);
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #F8FAFC;
 }
 
 .nav-links {
@@ -90,31 +96,21 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-muted);
+    color: #cbd5e1;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 0.95rem;
-    transition: all 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
     position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -5px;
-    left: 0;
-    background-color: var(--primary);
-    transition: width 0.3s;
+    letter-spacing: 0.5px;
 }
 
 .nav-links a:hover {
-    color: var(--text-main);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
 /* Hero Section */
@@ -136,10 +132,11 @@ body {
 
 .hero-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 5.5rem;
-    line-height: 1.05;
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1.1;
     margin-bottom: 1.5rem;
-    text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    letter-spacing: -1px;
 }
 
 .hero-title span {
@@ -157,24 +154,24 @@ body {
 
 .cta-button {
     display: inline-block;
-    padding: 1.2rem 3rem;
-    background: var(--gradient-primary);
-    color: #000;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    padding: 1rem 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
     text-decoration: none;
-    border-radius: 50px;
-    box-shadow: 0 10px 25px var(--primary-glow);
-    transition: all 0.4s;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 15px 35px var(--primary-glow);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Aurora Global Background */
@@ -553,6 +550,11 @@ body {
     right: -30px;
     animation-delay: -5s;
 }
+.badge-4 {
+    top: 25%;
+    left: -40px;
+    animation-delay: -2s;
+}
 .badge-icon {
     font-size: 1.5rem;
     background: rgba(255,255,255,0.1);
@@ -704,20 +706,7 @@ body {
 }
 
 .bg-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: clamp(8rem, 20vw, 25rem);
-    font-weight: 800;
-    color: transparent;
-    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.03);
-    z-index: 0;
-    pointer-events: none;
-    white-space: nowrap;
-    text-align: center;
-    font-family: 'Outfit', sans-serif;
-    letter-spacing: -5px;
+    display: none;
 }
 
 .section > *:not(.bg-watermark) {
@@ -727,12 +716,12 @@ body {
 
 .section-title {
     font-family: 'Outfit', sans-serif;
-    font-size: 3.5rem;
+    font-weight: 600;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 1.5rem;
-    background: linear-gradient(to right, #fff, #94A3B8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #F8FAFC;
+    letter-spacing: -0.5px;
 }
 
 .section-desc {
@@ -745,12 +734,12 @@ body {
 
 /* Glassmorphism Containers */
 .glass-container {
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 30px;
+    background: rgba(15, 23, 42, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
     padding: 4rem;
-    backdrop-filter: blur(30px);
-    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -1242,6 +1231,24 @@ input[type=range]::-webkit-slider-runnable-track {
     text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
 }
 
+@keyframes spinWeather {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(15deg) scale(1.15); filter: drop-shadow(0 0 15px rgba(250, 204, 21, 0.8)); }
+    100% { transform: rotate(0deg) scale(1); }
+}
+
+.weather-icon {
+    display: inline-block;
+    animation: spinWeather 4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes pulseTime {
+    0% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255,255,255,0.1)); }
+    50% { transform: scale(1.03); filter: drop-shadow(0 0 40px rgba(255,255,255,0.5)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255,255,255,0.1)); }
+}
+
 .tft-time {
     font-family: 'Outfit', sans-serif;
     font-size: 6.5rem;
@@ -1251,6 +1258,7 @@ input[type=range]::-webkit-slider-runnable-track {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+    animation: pulseTime 3s infinite ease-in-out;
 }
 
 .tft-date {
